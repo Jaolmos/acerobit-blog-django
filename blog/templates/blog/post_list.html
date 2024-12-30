@@ -37,4 +37,19 @@
        {% endfor %}
    </div>
 </div>
+<div class="mt-6">
+    {% if page_obj.has_other_pages %}
+        <div class="flex justify-center space-x-4">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="text-blue-600 hover:text-blue-800">&laquo; Anterior</a>
+            {% endif %}
+            
+            <span class="text-gray-700">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+            
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="text-blue-600 hover:text-blue-800">Siguiente &raquo;</a>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
 {% endblock %}
