@@ -9,6 +9,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media/
+staticfiles/  # Añadir esta línea
 
 # Entorno virtual
 venv/
@@ -19,3 +20,9 @@ venv/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from tinymce.models import HTMLField
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -33,7 +34,7 @@ class Tag(models.Model):
 class Post(models.Model):
    title = models.CharField(max_length=200)
    slug = models.SlugField(max_length=200, unique=True)
-   content = models.TextField()
+   content = HTMLField()
    created_at = models.DateTimeField(auto_now_add=True) 
    updated_at = models.DateTimeField(auto_now=True)
    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
