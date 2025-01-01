@@ -10,15 +10,15 @@ db.sqlite3
 db.sqlite3-journal
 media/
 
-# Ignorar archivos generados de TinyMCE
+# TinyMCE específicamente
 /staticfiles/django_tinymce/
 /staticfiles/tinymce/
 
-# NO ignorar los archivos estáticos de admin y propios
+# Mantener archivos de admin
 !/staticfiles/admin/
 !/staticfiles/admin/css/
-!/staticfiles/adminjs/
-!/staticfiles/img/
+!/staticfiles/admin/js/
+!/staticfiles/admin/img/
 
 # Entorno virtual
 venv/
