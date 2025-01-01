@@ -34,6 +34,13 @@ class Tag(models.Model):
 class Post(models.Model):
    title = models.CharField(max_length=200)
    slug = models.SlugField(max_length=200, unique=True)
+   featured_image = models.ImageField(
+        upload_to='posts/%Y/%m/',
+        blank=True,
+        null=True,
+        verbose_name="Imagen destacada",
+        help_text="Esta imagen se mostrará tanto en el listado como en el detalle del post"
+    )
    content = HTMLField()
    created_at = models.DateTimeField(auto_now_add=True) 
    updated_at = models.DateTimeField(auto_now=True)
