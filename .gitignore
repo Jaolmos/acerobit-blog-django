@@ -16,8 +16,8 @@ media/
 
 # NO ignorar los archivos estáticos de admin y propios
 !/staticfiles/admin/
-!/staticfiles/css/
-!/staticfiles/js/
+!/staticfiles/admin/css/
+!/staticfiles/adminjs/
 !/staticfiles/img/
 
 # Entorno virtual
