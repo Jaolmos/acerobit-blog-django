@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<div class="container mx-auto px-4 py-8">
     <h2 class="text-2xl font-bold mb-8">
         {% if request.GET.q %}
             Resultados de búsqueda para: "{{ request.GET.q }}"
@@ -9,18 +10,39 @@
         {% endif %}
     </h2>
 
-    <div class="space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% if posts %}
             {% for post in posts %}
-                <article class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <h2 class="text-2xl font-semibold mb-2">
-                        <a href="{{ post.get_absolute_url }}" class="text-blue-600 hover:text-blue-800">
-                            {{ post.title }}
-                        </a>
-                    </h2>
-                    <div class="text-gray-600 mb-4">
-                        <span class="mr-4">{{ post.created_at|date:"d/m/Y" }}</span>
-                        <span>Categoría: {{ post.category.name }}</span>
+                <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+                    {% if post.featured_image %}
+                    <div class="w-full h-48 md:h-56">
+                        <img src="{{ post.featured_image.url }}" 
+                             alt="{{ post.title }}"
+                             class="w-full h-full object-cover">
+                    </div>
+                    {% endif %}
+                    
+                    <div class="p-6">
+                        <h2 class="text-2xl font-semibold mb-2">
+                            <a href="{{ post.get_absolute_url }}" class="text-blue-600 hover:text-blue-800">
+                                {{ post.title }}
+                            </a>
+                        </h2>
+                        <div class="text-gray-600 mb-4">
+                            <span class="mr-4">{{ post.created_at|date:"d/m/Y" }}</span>
+                            <a href="{% url 'blog:post_by_category' post.category.slug %}" class="hover:text-blue-600">
+                                Categoría: {{ post.category.name }}
+                            </a>
+                            {% if post.tags.all %}
+                                <div class="mt-2">
+                                    {% for tag in post.tags.all %}
+                                        <a href="{% url 'blog:post_by_tag' tag.slug %}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 hover:bg-gray-300">
+                                            {{ tag.name }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </article>
             {% endfor %}
@@ -28,4 +50,21 @@
             <p class="text-gray-600">No se encontraron resultados.</p>
         {% endif %}
     </div>
+
+    <div class="mt-6">
+        {% if page_obj.has_other_pages %}
+            <div class="flex justify-center space-x-4">
+                {% if page_obj.has_previous %}
+                    <a href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}" class="text-blue-600 hover:text-blue-800">&laquo; Anterior</a>
+                {% endif %}
+                
+                <span class="text-gray-700">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+                
+                {% if page_obj.has_next %}
+                    <a href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}" class="text-blue-600 hover:text-blue-800">Siguiente &raquo;</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
