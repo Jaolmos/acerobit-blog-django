@@ -9,7 +9,16 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media/
-staticfiles/  # Añadir esta línea
+
+# Ignorar archivos generados de TinyMCE
+/staticfiles/django_tinymce/
+/staticfiles/tinymce/
+
+# NO ignorar los archivos estáticos de admin y propios
+!/staticfiles/admin/
+!/staticfiles/css/
+!/staticfiles/js/
+!/staticfiles/img/
 
 # Entorno virtual
 venv/
