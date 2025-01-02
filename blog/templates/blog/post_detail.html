@@ -29,7 +29,7 @@
         {% if post.featured_image %}
         <div class="w-full h-64 md:h-96 mb-8"> <!-- Contenedor de imagen -->
             <img src="{{ post.featured_image.url }}" 
-                 alt="{{ post.title }}"
+                 alt="Imagen destacada: {{ post.title }} - {{ post.category.name }}"
                  class="w-full h-full object-cover rounded-lg">
         </div>
         {% endif %}
