@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /tinymce/
+
+# Permitir indexar contenido principal
+Allow: /post/
+Allow: /category/
+Allow: /tag/
+
+# Ubicación del Sitemap
+Sitemap: https://example.com/sitemap.xml
