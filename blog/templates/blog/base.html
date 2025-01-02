@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Blog tecnológico{% endblock %}</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>{% block title %}Blog tecnológico{% endblock %} | Tech & AI Blog</title>
+    <meta name="description" content="{% block meta_description %}Blog especializado en tecnología, desarrollo web, Python, Django, inteligencia artificial (IA/AI) y machine learning. Tutoriales prácticos, guías de desarrollo y análisis de tecnologías emergentes.{% endblock %}">
+    <meta name="keywords" content="python, django, desarrollo web, programación, inteligencia artificial, IA, AI, machine learning, deep learning, tecnología, tutoriales">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% block og_title %}{{ block.super }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ block.super }}{% endblock %}">
+    {% if post.featured_image %}
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}">
+    {% endif %}
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
