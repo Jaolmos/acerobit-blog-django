@@ -10,7 +10,8 @@
                     <a href="{% url 'blog:post_list' %}">AceroBit IA</a>
                 </h1>
             </div>
-            <div class="w-1/3">
+            <a href="{% url 'blog:post_list' %}" class="hidden md:block text-gray-600 hover:text-blue-600 text-lg">Inicio</a>
+            <div class="w-1/2 md:w-1/3">
                 <form method="GET" action="{% url 'blog:search_results' %}">
                     <input type="search" name="q" 
                            placeholder="Buscar..." 
