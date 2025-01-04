@@ -44,10 +44,13 @@ INSTALLED_APPS = [
     'blog',
     # third party apps
     'tailwind',
+    'theme',
+    'django_browser_reload',
     'tinymce',
     
     
 ]
+
 
 SITE_ID = 1
 
@@ -59,6 +62,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+]
+
+# Configuración de Tailwind
+TAILWIND_APP_NAME = 'theme'
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+
+# IPs permitidas para desarrollo
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 ROOT_URLCONF = 'tech_blog.urls'

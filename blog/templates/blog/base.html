@@ -1,3 +1,7 @@
+{% load static %}
+{% load tailwind_tags %}
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,8 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     
 
-    <!-- SEO Meta Tags -->
     <title>{% block title %}Blog tecnológico{% endblock %} | AceroBit IA</title>
+    {% tailwind_css %}
+    
+    <!-- SEO Meta Tags -->
     <meta name="description" content="{% block meta_description %}Blog especializado en tecnología, desarrollo web, Python, Django, inteligencia artificial (IA/AI) y machine learning. Tutoriales prácticos, guías de desarrollo y análisis de tecnologías emergentes.{% endblock %}">
     <meta name="keywords" content="python, django, desarrollo web, programación, inteligencia artificial, IA, AI, machine learning, deep learning, tecnología, tutoriales">
     <meta name="robots" content="index, follow">
@@ -48,7 +54,7 @@
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}">
     {% endif %}
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    
 </head>
 <body>
     {% include 'blog/includes/header.html' %}

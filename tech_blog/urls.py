@@ -33,6 +33,7 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
-    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),  # Añadir esta línea
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")), 
     path('', include('blog.urls')),
+    path("__reload__/", include("django_browser_reload.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
