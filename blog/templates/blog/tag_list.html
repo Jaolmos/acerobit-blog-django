@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Todos los Tags | Tech & AI Blog{% endblock %}
+
+{% block meta_description %}
+Explora todos los tags de nuestro blog. Encuentra artículos específicos sobre tecnología, desarrollo, inteligencia artificial y más.
+{% endblock %}
+
+{% block content %}
+    <!-- Header con gradiente -->
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 mb-8 rounded-lg shadow-sm">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Todos los Tags</h1>
+                    <p class="text-lg text-gray-600">
+                        Descubre todos nuestros tags y encuentra exactamente el contenido 
+                        que estás buscando.
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    <svg class="w-48 h-48 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" 
+                              d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid de tags -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for tag in tags %}
+            <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-4">
+                    <a href="{% url 'blog:post_by_tag' tag.slug %}" 
+                       class="text-gray-900 hover:text-blue-600">
+                        {{ tag.name }}
+                    </a>
+                </h2>
+                <p class="text-gray-600">{{ tag.posts.count }} artículos</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

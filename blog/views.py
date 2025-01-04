@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
-from .models import Post
-from django.db.models import Q
+from .models import Post, Category, Tag
+from django.db.models import Q, Count
 
 class PostListView(ListView):
     model = Post
@@ -57,3 +57,23 @@ class SearchResultsView(ListView):
                 Q(tags__name__icontains=query)       
             ).distinct()                             
         return Post.objects.none()
+    
+class CategoriesListView(ListView):
+    model = Category
+    template_name = 'blog/categories_list.html'
+    context_object_name = 'categories'
+
+    def get_queryset(self):
+        return Category.objects.annotate(
+            post_count=Count('posts')
+        ).order_by('-post_count')  # Ordenar por número de posts
+
+class TagsListView(ListView):
+    model = Tag
+    template_name = 'blog/tags_list.html'
+    context_object_name = 'tags'
+
+    def get_queryset(self):
+        return Tag.objects.annotate(
+            post_count=Count('posts')
+        ).order_by('-post_count')  # Ordenar por número de posts

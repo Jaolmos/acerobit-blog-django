@@ -12,9 +12,15 @@
                 </li>
             {% endfor %}
         </ul>
+        <a href="{% url 'blog:categories_list' %}" class="text-blue-600 hover:text-blue-800 text-sm mt-4 inline-flex items-center">
+            Ver todas las categorías 
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </a>
     </div>
 
-    <!-- Tags populares -->
+    <!-- Tags -->
     <div class="mb-8">
         <h3 class="text-lg font-bold mb-4">Tags</h3>
         <div class="flex flex-wrap gap-2">
@@ -25,5 +31,11 @@
                 </a>
             {% endfor %}
         </div>
+        <a href="{% url 'blog:tags_list' %}" class="text-blue-600 hover:text-blue-800 text-sm mt-4 inline-flex items-center">
+            Ver todos los tags 
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </a>
     </div>
 </div>

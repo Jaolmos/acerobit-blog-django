@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Todas las Categorías | Tech & AI Blog{% endblock %}
+
+{% block meta_description %}
+Explora todas las categorías de nuestro blog. Encuentra artículos sobre tecnología, desarrollo, inteligencia artificial y más.
+{% endblock %}
+
+{% block content %}
+    <!-- Header con gradiente -->
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 mb-8 rounded-lg shadow-sm">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Todas las Categorías</h1>
+                    <p class="text-lg text-gray-600">
+                        Explora nuestras categorías y encuentra contenido específico sobre tecnología, 
+                        desarrollo e inteligencia artificial.
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    <svg class="w-48 h-48 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" 
+                              d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid de categorías -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for category in categories %}
+            <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h2 class="text-2xl font-bold mb-4">
+                    <a href="{% url 'blog:post_by_category' category.slug %}" 
+                       class="text-gray-900 hover:text-blue-600">
+                        {{ category.name }}
+                    </a>
+                </h2>
+                <p class="text-gray-600">{{ category.posts.count }} artículos</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
