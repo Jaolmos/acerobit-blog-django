@@ -4,12 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Google Fonts - Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+
     <!-- SEO Meta Tags -->
     <title>{% block title %}Blog tecnológico{% endblock %} | Tech & AI Blog</title>
     <meta name="description" content="{% block meta_description %}Blog especializado en tecnología, desarrollo web, Python, Django, inteligencia artificial (IA/AI) y machine learning. Tutoriales prácticos, guías de desarrollo y análisis de tecnologías emergentes.{% endblock %}">
     <meta name="keywords" content="python, django, desarrollo web, programación, inteligencia artificial, IA, AI, machine learning, deep learning, tecnología, tutoriales">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+     <!-- Configuración de Tailwind -->
+     <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Nunito', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+     <!-- Estilos adicionales si fueran necesarios -->
+     <style type="text/tailwindcss">
+        @layer base {
+            html {
+                font-family: Nunito, system-ui, sans-serif;
+            }
+        }
+    </style>
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
