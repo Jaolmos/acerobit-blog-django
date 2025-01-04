@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{{ post.title }} | AceroBit IA{% endblock %}
 
 {% block meta_description %}
 {{ post.content|striptags|truncatewords:30 }}
 {% endblock %}
 
-{% block og_title %}{{ post.title }}{% endblock %}
+{% block og_title %}{{ post.title }} | AceroBit IA{% endblock %}
 
 {% block og_description %}
 {{ post.content|striptags|truncatewords:30 }}
