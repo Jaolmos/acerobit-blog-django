@@ -1,5 +1,47 @@
 {% extends 'blog/base.html' %}
 
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block meta_description %}
+{{ post.content|striptags|truncatewords:30 }}
+{% endblock %}
+
+{% block og_title %}{{ post.title }}{% endblock %}
+
+{% block og_description %}
+{{ post.content|striptags|truncatewords:30 }}
+{% endblock %}
+
+{% block og_type %}article{% endblock %}
+
+{% block extra_meta %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ post.title }}",
+    "datePublished": "{{ post.created_at|date:'c' }}",
+    "dateModified": "{{ post.updated_at|date:'c' }}",
+    "description": "{{ post.content|striptags|truncatewords:30 }}",
+    {% if post.featured_image %}
+    "image": "{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}",
+    {% endif %}
+    "author": {
+        "@type": "Organization",
+        "name": "Tech & AI Blog"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tech & AI Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ request.scheme }}://{{ request.get_host }}/static/blog/images/logo.png"
+        }
+    }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     <article class="bg-white p-8 rounded-lg shadow-md">

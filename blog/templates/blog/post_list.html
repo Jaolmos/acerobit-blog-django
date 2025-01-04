@@ -1,5 +1,18 @@
 {% extends 'blog/base.html' %}
 
+{% block title %}Blog de Tecnología, Desarrollo e Inteligencia Artificial{% endblock %}
+
+{% block meta_description %}
+Explora artículos sobre tecnología, desarrollo web, Python, Django, inteligencia artificial y más. Noticias y análisis detallados de las últimas tendencias tecnológicas y avances en IA.
+{% endblock %}
+
+{% block og_title %}Blog de Tecnología, Desarrollo e Inteligencia Artificial{% endblock %}
+
+{% block og_description %}
+Artículos, noticias y guías sobre desarrollo web, programación, inteligencia artificial, machine learning y tecnologías emergentes.
+{% endblock %}
+
+
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     {% if not category and not tag %}
