@@ -48,6 +48,7 @@ Artículos, noticias y guías sobre desarrollo web, programación, inteligencia 
                 {% if post.featured_image %}
                 <div class="w-full h-48 md:h-56">
                     <img src="{{ post.featured_image.url }}" 
+                         loading="lazy"
                          alt="Imagen destacada: {{ post.title }} - {{ post.category.name }}"
                          class="w-full h-full object-cover">
                 </div>
