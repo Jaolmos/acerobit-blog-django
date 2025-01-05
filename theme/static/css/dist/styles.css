@@ -1373,6 +1373,10 @@ select {
   margin-top: 1.5rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -1449,6 +1453,10 @@ select {
   width: 100%;
 }
 
+.max-w-3xl {
+  max-width: 48rem;
+}
+
 .max-w-none {
   max-width: none;
 }
@@ -1459,6 +1467,10 @@ select {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .grid-cols-1 {
@@ -1519,6 +1531,12 @@ select {
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1533,6 +1551,10 @@ select {
 
 .border {
   border-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
 }
 
 .bg-gray-200 {
@@ -1611,6 +1633,10 @@ select {
   padding-bottom: 2rem;
 }
 
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
@@ -1643,6 +1669,11 @@ select {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -1729,6 +1760,10 @@ select {
 .hover\:text-blue-800:hover {
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity, 1));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
 .hover\:shadow-lg:hover {
