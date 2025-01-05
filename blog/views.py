@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView
 from .models import Post, Category, Tag
 from django.db.models import Q, Count
+from django.shortcuts import render
 
 class PostListView(ListView):
     model = Post
@@ -77,3 +78,13 @@ class TagsListView(ListView):
         return Tag.objects.annotate(
             post_count=Count('posts')
         ).order_by('-post_count')  # Ordenar por número de posts
+        
+
+def aviso_legal(request):
+    return render(request, 'blog/legal/aviso-legal.html')
+
+def politica_privacidad(request):
+    return render(request, 'blog/legal/privacidad.html')
+
+def politica_cookies(request):
+    return render(request, 'blog/legal/cookies.html')
