@@ -88,3 +88,6 @@ def politica_privacidad(request):
 
 def politica_cookies(request):
     return render(request, 'blog/legal/cookies.html')
+
+def contact(request):
+    return render(request, 'blog/legal/contacto.html')
