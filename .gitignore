@@ -1,7 +1,9 @@
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
+*.pyc.class
+*.pid
+*.err
 
 # Django
 *.log
@@ -13,8 +15,6 @@ media/
 # MySQL
 *.mysql
 *.mysql-journal
-*.pid
-*.err
 
 # TinyMCE específicamente
 /staticfiles/django_tinymce/
@@ -28,8 +28,6 @@ media/
 
 # Entorno virtual
 venv/
-
-# Entorno
 .env
 
 # Sistema
@@ -41,3 +39,9 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Tailwind y archivos generados
+node_modules/
+/staticfiles/css/dist/
+**/css/dist/
+/theme/static/
