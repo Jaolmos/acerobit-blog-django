@@ -46,6 +46,14 @@ module.exports = {
             fontFamily: {
                 'sans': ['Nunito', 'system-ui', '-apple-system', 'sans-serif'],
             },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        maxWidth: 'none',
+                        width: '100%',
+                    },
+                },
+            },
         },
     },
     plugins: [
