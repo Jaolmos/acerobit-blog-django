@@ -47,5 +47,9 @@ node_modules/
 /theme/static/
 theme/
 
+# Pero mantener estos archivos de configuración
+!theme/static_src/tailwind.config.js
+!theme/static_src/src/styles.css
+
 # Django Browser Reload
 **/django-browser-reload/
