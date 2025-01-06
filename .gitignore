@@ -45,3 +45,6 @@ node_modules/
 /staticfiles/css/dist/
 **/css/dist/
 /theme/static/
+
+# Django Browser Reload
+**/django-browser-reload/
