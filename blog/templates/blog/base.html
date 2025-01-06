@@ -1,5 +1,5 @@
 {% load static %}
-{# {% load tailwind_tags %} #} 
+{% load tailwind_tags %} #} 
 
 
 <!DOCTYPE html>
@@ -16,9 +16,8 @@
 
     <title>{% block title %}Blog tecnológico{% endblock %} | AceroBit IA</title>
     
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    {# {% tailwind_css %} #} 
+   
+    {% tailwind_css %} 
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="{% block meta_description %}Blog especializado en tecnología, desarrollo web, Python, Django, inteligencia artificial (IA/AI) y machine learning. Tutoriales prácticos, guías de desarrollo y análisis de tecnologías emergentes.{% endblock %}">

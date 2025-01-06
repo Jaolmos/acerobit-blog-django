@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'blog',
     # third party apps
-    #'tailwind',
-    #'theme',
-    #'django_browser_reload',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
     'tinymce',
     
     
