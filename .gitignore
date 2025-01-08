@@ -8,6 +8,7 @@ __pycache__/
 # Django
 *.log
 local_settings.py
+tech_blog/settings.py
 db.sqlite3
 db.sqlite3-journal
 media/
@@ -52,4 +53,4 @@ theme/
 !theme/static_src/src/styles.css
 
 # Django Browser Reload
-**/django-browser-reload/
+**/django-browser-reload/tech_blog/settings.py
