@@ -14,26 +14,23 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+# Carga las variables de entorno desde el archivo .env
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Clave secreta para la aplicación (asegúrate de mantenerla segura)
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-
-
+# Modo de depuración
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
+# Hosts permitidos
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
-
-# Application definition
-
+# Definición de aplicaciones instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,17 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'blog',
-    # third party apps
+    # Aplicaciones de terceros
     'tailwind',
     'theme',
+    'django_browser_reload',  # <--- Solo en desarrollo
     'tinymce',
-    
-    
 ]
 
-
+# ID del sitio para django.contrib.sites
 SITE_ID = 1
 
+# Middleware utilizado por la aplicación
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -63,23 +60,32 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',  # <--- Solo en desarrollo
 ]
 
-# Configuración de Tailwind
+# Configuración de Tailwind CSS
 TAILWIND_APP_NAME = 'theme'
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
-# IPs permitidas para desarrollo
+# Ruta al ejecutable de npm
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"  # <--- Ruta para entorno local (Windows)
+
+# <--- En producción, cambia la ruta a la correspondiente en el servidor
+# Por ejemplo:
+# NPM_BIN_PATH = "/usr/local/bin/npm"
+
+# IPs permitidas para el middleware de recarga del navegador (desarrollo)
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+# Configuración de URLs raíz
 ROOT_URLCONF = 'tech_blog.urls'
 
+# Configuración de templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [],  # Directorios adicionales para templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,12 +99,11 @@ TEMPLATES = [
     },
 ]
 
+# Aplicación WSGI
 WSGI_APPLICATION = 'tech_blog.wsgi.application'
 
-
-# Database
+# Configuración de la base de datos
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE'),
@@ -110,9 +115,8 @@ DATABASES = {
     }
 }
 
-# Password validation
+# Validadores de contraseña
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -128,10 +132,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
+# Internacionalización
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -140,26 +142,29 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
+# Archivos estáticos (CSS, JavaScript, Imágenes)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Media files (Uploads)
+# Archivos multimedia (Subidas)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Default primary key field type
+# Tipo de campo de clave primaria por defecto
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configuración de seguridad para producción
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
+# Configuraciones de seguridad adicionales para producción
+# Descomenta estas líneas al desplegar en producción para mejorar la seguridad
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# X_FRAME_OPTIONS = 'DENY'
+
+# Nota:
+# - 'django_browser_reload' y su middleware están incluidos solo en desarrollo.
+#   En producción, **debes comentar o eliminar** estas líneas para evitar cargar herramientas de desarrollo.
+# - Las configuraciones de seguridad adicionales están comentadas y deben **descomentarse** en producción.
