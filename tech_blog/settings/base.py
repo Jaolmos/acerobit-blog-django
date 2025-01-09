@@ -4,7 +4,11 @@ from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-load_dotenv()
+
+# Cargamos explícitamente el archivo .env desde la ruta BASE_DIR
+# para asegurarnos de que Django lea estas variables en producción.
+dotenv_path = BASE_DIR / '.env'
+load_dotenv(dotenv_path)
 
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = os.getenv('SECRET_KEY')
