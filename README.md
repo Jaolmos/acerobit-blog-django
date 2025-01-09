@@ -119,38 +119,47 @@ python manage.py tailwind install
 ```
 
 6. Configurar variables de entorno:
+   - Copiar `.env.example` a `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   - Actualizar las credenciales en el archivo `.env`:
+   ```bash
+   # Django
+   SECRET_KEY='tu_clave_secreta'
+   DEBUG=True
+   ALLOWED_HOSTS=localhost,127.0.0.1
+   DJANGO_ENV=development
 
-```bash
-cp .env.example .env
-```
+   # Database MySQL
+   DB_ENGINE='django.db.backends.mysql'
+   DB_NAME='nombre_base_datos'
+   DB_USER='usuario'
+   DB_PASSWORD='contraseña'
+   DB_HOST='localhost'
+   DB_PORT='3306'
+   ```
 
-7. Configurar la base de datos MySQL:
-   - Crear una base de datos MySQL
-   - Actualizar las credenciales de la base de datos en el archivo `.env`:
 
-```bash
-DATABASE_URL=mysql://usuario:contraseña@localhost:3306/nombre_base_datos
-```
-
-8. Realizar migraciones:
+7. Realizar migraciones:
 
 ```bash
 python manage.py migrate
 ```
 
-9. Crear superusuario para el panel de administración:
+8. Crear superusuario para el panel de administración:
 
 ```bash
 python manage.py createsuperuser
 ```
 
-10. Iniciar el compilador de Tailwind:
+9. Iniciar el compilador de Tailwind:
 
 ```bash
 python manage.py tailwind start
 ```
 
-11. En otra terminal, iniciar servidor de desarrollo:
+10. En otra terminal, iniciar servidor de desarrollo:
 
 ```bash
 python manage.py runserver
