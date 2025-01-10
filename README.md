@@ -3,7 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![Django](https://img.shields.io/badge/Django-5.1.4-green.svg)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 AceroBit IA es un Blog tecnológico enfocado en Inteligencia Artificial y desarrollo de software, optimizado para SEO, con diseño responsive y un completo sistema de gestión de contenidos que incluye categorías y tags
 
@@ -74,7 +73,6 @@ proyecto/
 ├── theme/static_src/ # Archivos fuente de Tailwind
 ├── .env.example # Ejemplo de variables de entorno
 ├── .gitignore # Configuración de Git ignore
-├── LICENSE # Licencia MIT
 ├── manage.py # Script de gestión de Django
 ├── requirements.txt # Dependencias del proyecto
 ```
@@ -94,8 +92,8 @@ npm --version    # Debe ser 8.0 o superior
 2. Clonar el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/acerobit-ia.git
-cd acerobit-ia
+git clone https://github.com/tu-usuario/acerobit-blog-django.git
+cd acerobit-blog-django
 ```
 
 3. Crear y activar entorno virtual:
@@ -191,13 +189,6 @@ DATABASE_URL=mysql://user:password@localhost:3306/database
 - Panel de usuario
 - Formulario de contacto
 
-## 📝 Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## 👤 Autor
-
-- **Jose Antonio Olmos**
-- Email: jose.a.olmosmartinez@gmail.com
 
 
