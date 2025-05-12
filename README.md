@@ -11,6 +11,7 @@ AceroBit IA es un Blog tecnológico enfocado en Inteligencia Artificial y desarr
 ### Sistema de Contenidos
 - Sistema de publicación de posts con categorías y etiquetas
 - Editor visual TinyMCE para la creación de contenido (panel de administración)
+- FileBrowser integrado para subir e insertar imágenes en el contenido de los posts
 - Soporte para imágenes destacadas en posts
 - Buscador integrado para todo el contenido
 - URLs amigables y optimizadas para SEO
@@ -49,6 +50,7 @@ AceroBit IA es un Blog tecnológico enfocado en Inteligencia Artificial y desarr
 - Django 5.1.4
 - MySQL
 - TinyMCE
+- FileBrowser
 
 ### Frontend
 - TailwindCSS 3.0+
@@ -61,6 +63,7 @@ AceroBit IA es un Blog tecnológico enfocado en Inteligencia Artificial y desarr
 - python-dotenv (variables de entorno)
 - django-tailwind (estilos)
 - Pillow (manejo de imágenes)
+- django-filebrowser-no-grappelli (gestión de archivos)
 
 ## 📦 Estructura del Proyecto
 
@@ -68,6 +71,7 @@ AceroBit IA es un Blog tecnológico enfocado en Inteligencia Artificial y desarr
 proyecto/
 ├── blog/ # Aplicación principal
 ├── media/ # Archivos multimedia subidos (creada automáticamente)
+│   └── uploads/ # Directorio para imágenes gestionadas por FileBrowser
 ├── staticfiles/admin/ # Archivos estáticos del admin
 ├── tech_blog/ # Configuración del proyecto
 ├── theme/static_src/ # Archivos fuente de Tailwind
@@ -173,6 +177,23 @@ DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 DATABASE_URL=mysql://user:password@localhost:3306/database
 ```
+
+## 📝 Uso del Editor
+
+### Insertar imágenes en posts
+1. Desde el panel de administración, al editar un post:
+   - Haz clic en el botón de imagen en el editor TinyMCE
+   - Haz clic en "Browse" para abrir FileBrowser
+   - Navega o sube una nueva imagen
+   - Selecciona la imagen y ajusta sus propiedades
+   - Haz clic en "Insert" para añadirla al contenido del post
+
+### Gestión de archivos
+1. Accede a `/admin/filebrowser/browse/` para gestionar todas tus imágenes
+2. Funciones disponibles:
+   - Subir nuevas imágenes
+   - Crear directorios para organizar tus archivos
+   - Renombrar, borrar o editar imágenes existentes
 
 ## 🔒 Características de Seguridad
 
