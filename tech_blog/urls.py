@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap, CategorySitemap, TagSitemap
 from django.views.generic import TemplateView  # Añadir esta línea
+from filebrowser.sites import site
 
 sitemaps = {
     'posts': PostSitemap,
@@ -29,6 +30,7 @@ sitemaps = {
 }
 
 urlpatterns = [
+    path('admin/filebrowser/', site.urls),
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
