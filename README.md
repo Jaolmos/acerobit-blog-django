@@ -30,6 +30,52 @@ AceroBit IA es un Blog tecnológico enfocado en Inteligencia Artificial y desarr
 - URLs semánticas y amigables
 - Imágenes optimizadas con lazy loading
 
+## 📸 Capturas de Pantalla
+
+### Interfaz de Usuario
+
+#### Página Principal
+![Página Principal](screenshots/home.png)
+*Vista de la página principal con los posts más recientes*
+
+#### Detalle de Post
+![Detalle de Post](screenshots/post_detail.png)
+*Vista detallada de un artículo con contenido completo*
+
+#### Categorías
+![Lista de Categorías](screenshots/categories_list.png)
+*Página de navegación por categorías*
+
+#### Etiquetas
+![Lista de Tags](screenshots/tag_list.png)
+*Página de navegación por etiquetas*
+
+#### Resultados de Búsqueda
+![Resultados de Búsqueda](screenshots/search_results.png)
+*Interfaz de resultados de búsqueda*
+
+### Panel de Administración
+
+#### Dashboard Principal
+![Dashboard Admin](screenshots/admin_dashboard.png)
+*Panel principal de administración de Django*
+
+#### Gestión de Posts
+![Listado de Posts](screenshots/admin_posts_list.png)
+*Listado y gestión de artículos en el panel de administración*
+
+#### Editor de Contenido
+![Editor de Post](screenshots/admin_post_edit.png)
+*Editor visual TinyMCE para la creación y edición de contenido*
+
+#### Gestión de Categorías
+![Gestión de Categorías](screenshots/admin_categories.png)
+*Administración de categorías para organizar el contenido*
+
+#### Gestión de Tags
+![Gestión de Tags](screenshots/admin_tags.png)
+*Administración de etiquetas para clasificar los artículos*
+
 ## 🛠 Requisitos Previos
 
 ### Python y Django
@@ -75,6 +121,7 @@ proyecto/
 ├── staticfiles/admin/ # Archivos estáticos del admin
 ├── tech_blog/ # Configuración del proyecto
 ├── theme/static_src/ # Archivos fuente de Tailwind
+├── screenshots/ # Capturas de pantalla de la aplicación
 ├── .env.example # Ejemplo de variables de entorno
 ├── .gitignore # Configuración de Git ignore
 ├── manage.py # Script de gestión de Django
