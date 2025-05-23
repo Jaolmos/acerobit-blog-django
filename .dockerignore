@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+
+# Virtual environments
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node modules (se instalarán en el contenedor)
+node_modules/
+
+# Archivos locales
+.env.local
+.env.example
+
+# Media files (se crean en runtime)
+media/
+staticfiles/
+
+# Screenshots
+screenshots/
