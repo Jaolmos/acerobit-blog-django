@@ -110,6 +110,7 @@ AceroBit IA es un Blog tecnológico enfocado en Inteligencia Artificial y desarr
 - django-tailwind (estilos)
 - Pillow (manejo de imágenes)
 - django-filebrowser-no-grappelli (gestión de archivos)
+- Docker (containerización - opcional)
 
 ## 📦 Estructura del Proyecto
 
@@ -124,6 +125,8 @@ proyecto/
 ├── screenshots/ # Capturas de pantalla de la aplicación
 ├── .env.example # Ejemplo de variables de entorno
 ├── .gitignore # Configuración de Git ignore
+├── Dockerfile # Configuración de imagen Docker
+├── .dockerignore # Archivos excluidos del build Docker
 ├── manage.py # Script de gestión de Django
 ├── requirements.txt # Dependencias del proyecto
 ```
@@ -131,6 +134,8 @@ proyecto/
 *Nota: La carpeta `media` se crea automáticamente cuando se sube la primera imagen a través del panel de administración.*
 
 ## 🚀 Instalación
+
+### Opción 1: Instalación Local Tradicional
 
 1. Asegúrate de tener instalados Python y Node.js:
 
@@ -213,6 +218,49 @@ python manage.py tailwind start
 ```bash
 python manage.py runserver
 ```
+
+### Opción 2: Instalación con Docker 🐳
+
+**Requisitos:**
+- Docker instalado en tu sistema
+- MySQL ejecutándose localmente en el puerto 3306
+
+**Configuración de variables de entorno:**
+- Asegúrate de que tu archivo `.env` use `DB_HOST=host.docker.internal` para conectar con MySQL local
+
+**Comandos básicos:**
+
+```bash
+# 1. Construir la imagen Docker
+docker build -t acerobit-blog .
+
+# 2. Ejecutar el contenedor (desarrollo - con archivos media)
+docker run -p 8000:8000 -v ./media:/app/media acerobit-blog
+
+# 3. Comandos útiles de gestión
+docker ps                    # Ver contenedores en ejecución
+docker stop CONTAINER_ID     # Parar contenedor
+docker images                # Ver imágenes disponibles
+docker logs CONTAINER_ID     # Ver logs del contenedor
+```
+
+**¿Por qué el volumen `-v ./media:/app/media`?**
+- Conecta la carpeta `media` de tu PC con la del contenedor
+- Permite que las imágenes del blog se vean correctamente
+- Los archivos se sincronizan en tiempo real
+
+**Archivos Docker incluidos:**
+- `Dockerfile`: Configuración de la imagen (Python 3.12, Node.js, Tailwind, dependencias)
+- `.dockerignore`: Archivos excluidos del build
+
+**Consideraciones para despliegue en producción:**
+- **Archivos media**: En producción, usa servicios en la nube como:
+  - AWS S3 (más popular)
+  - Cloudinary (especializado en imágenes, 10GB gratis)
+  - Google Cloud Storage
+  - DigitalOcean Spaces
+- **Base de datos**: Usar base de datos gestionada en lugar de MySQL local
+- **Variables de entorno**: Configurar `DEBUG=False` y `ALLOWED_HOSTS` apropiados
 
 ## 🔧 Configuración
 
