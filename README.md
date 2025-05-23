@@ -262,6 +262,46 @@ docker logs CONTAINER_ID     # Ver logs del contenedor
 - **Base de datos**: Usar base de datos gestionada en lugar de MySQL local
 - **Variables de entorno**: Configurar `DEBUG=False` y `ALLOWED_HOSTS` apropiados
 
+### Docker Avanzado - Entornos Dinámicos 🎯
+
+El Dockerfile está configurado para **cambiar automáticamente** entre desarrollo y producción usando variables de entorno:
+
+**Variable clave: `DJANGO_ENV`**
+- `DJANGO_ENV=development` (por defecto) → Usa `runserver` (desarrollo)
+- `DJANGO_ENV=production` → Usa `gunicorn` (producción)
+
+**Comandos según entorno:**
+
+```bash
+# Desarrollo (por defecto) - con MySQL local y archivos media
+docker run -p 8000:8000 -v ./media:/app/media acerobit-blog
+
+# Producción - con variables de entorno
+docker run -p 8000:8000 \
+  -e DJANGO_ENV=production \
+  -e DEBUG=False \
+  -e DB_HOST=tu-base-datos-produccion.com \
+  -e ALLOWED_HOSTS=tudominio.com,www.tudominio.com \
+  acerobit-blog
+
+# Producción con archivo .env
+docker run -p 8000:8000 --env-file .env.production acerobit-blog
+```
+
+**¿Qué cambia automáticamente?**
+- **Desarrollo**: Django runserver con `--insecure` (sirve archivos estáticos)
+- **Producción**: Gunicorn con 3 workers optimizado para producción
+
+**Ejemplo de `.env.production`:**
+```bash
+DJANGO_ENV=production
+DEBUG=False
+ALLOWED_HOSTS=tudominio.com,www.tudominio.com
+DB_HOST=production-database.amazonaws.com
+DB_NAME=acerobit_production
+# ... resto de variables
+```
+
 ## 🔧 Configuración
 
 El proyecto utiliza variables de entorno para la configuración. Principales variables a configurar:

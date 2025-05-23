@@ -37,5 +37,5 @@ RUN python manage.py collectstatic --noinput
 # Exponer puerto 8000
 EXPOSE 8000
 
-# Comando por defecto
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--insecure"]
+# Comando dinámico basado en DJANGO_ENV
+CMD ["sh", "-c", "if [ \"$DJANGO_ENV\" = \"production\" ]; then gunicorn tech_blog.wsgi:application --bind 0.0.0.0:8000 --workers 3; else python manage.py runserver 0.0.0.0:8000 --insecure; fi"]
