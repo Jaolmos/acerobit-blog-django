@@ -234,8 +234,8 @@ python manage.py runserver
 # 1. Construir la imagen Docker
 docker build -t acerobit-blog .
 
-# 2. Ejecutar el contenedor (desarrollo - con archivos media)
-docker run -p 8000:8000 -v ./media:/app/media acerobit-blog
+# 2. Ejecutar el contenedor (desarrollo - con proyecto completo sincronizado)
+docker run -p 8000:8000 -v .:/app acerobit-blog
 
 # 3. Comandos útiles de gestión
 docker ps                    # Ver contenedores en ejecución
@@ -244,10 +244,12 @@ docker images                # Ver imágenes disponibles
 docker logs CONTAINER_ID     # Ver logs del contenedor
 ```
 
-**¿Por qué el volumen `-v ./media:/app/media`?**
-- Conecta la carpeta `media` de tu PC con la del contenedor
+**¿Por qué el volumen `-v .:/app`?**
+- Conecta todo el proyecto de tu PC con el contenedor
 - Permite que las imágenes del blog se vean correctamente
 - Los archivos se sincronizan en tiempo real
+- Tu archivo `.env` está disponible para la configuración
+- Los cambios en código se reflejan inmediatamente (ideal para desarrollo)
 
 **Archivos Docker incluidos:**
 - `Dockerfile`: Configuración de la imagen (Python 3.12, Node.js, Tailwind, dependencias)
@@ -273,8 +275,8 @@ El Dockerfile está configurado para **cambiar automáticamente** entre desarrol
 **Comandos según entorno:**
 
 ```bash
-# Desarrollo (por defecto) - con MySQL local y archivos media
-docker run -p 8000:8000 -v ./media:/app/media acerobit-blog
+# Desarrollo (por defecto) - con proyecto completo sincronizado
+docker run -p 8000:8000 -v .:/app acerobit-blog
 
 # Producción - con variables de entorno
 docker run -p 8000:8000 \
